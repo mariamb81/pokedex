@@ -2,6 +2,9 @@
 
 A virtual Pokedex that allows users to search through 1000+ Pokemon and view information about their stats and abilities.
 
+## Try it out
+Link: https://pokedex-7e070f.netlify.app/
+
 ## Inspiration
 - PokeAPI
 https://pokeapi.co/
@@ -21,8 +24,6 @@ https://pokeapi.co/
 ![ClefairyInfo](src/resources/screenshots/clefairy_modal.png)
 
 ## What I learned
-- HTTP Caching
 - Serving and Sorting Data From an API
-- Automatic Filtering Search Results
-- Implementing custom client side sorting
+- Automatic Filtering of Search Results
 - Managing and passing down state
