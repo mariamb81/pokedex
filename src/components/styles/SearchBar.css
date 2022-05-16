@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;900&display=swap');
+html {
+    font-family: 'Rubik', sans-serif;
+}
+
+input {
+    font-size: 16px;
+    font-weight: 300;
+}
+.search-bar {
+    width: 55%;
+}
+.box {
+    display: grid;
+    grid-template-columns: .5fr 3fr;
+    height: 65px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white;
+    overflow: hidden;
+}
+.icon {
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    grid-row:1;
+    grid-column:1/2;
+}
+.query {
+    border: 0;
+    padding: 0.5rem;
+    grid-column: 2/3;
+    grid-row:1;
+    outline:none;
+}

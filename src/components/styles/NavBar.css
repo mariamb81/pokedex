@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;900&display=swap');
+
+.links{
+    overflow: auto;
+}
+.links a {
+    float: right;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Rubik', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+}
+.links a:hover {
+    background-color: #FB1B1B;
+}
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+.idv {
+    width: 100px;
+    height: auto;
+}
+.icon {
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+}
