@@ -29,7 +29,6 @@ export const PokeInfoModal = (props) => {
   const pokemonStats = data.stats.map((stat, index) => <div key={index} className="stat">
     <p>{stat.stat.name}</p>
     <span>
-      <p id='base-stat'>Base Stat: </p>
       <ProgressBar striped variant="success" now={stat.base_stat} />
     </span>
     <p id='effort'>Effort: {stat.effort}</p>
@@ -86,7 +85,7 @@ export const PokeInfoModal = (props) => {
           </Col>
           <Col id='col-2'>
               <div className='stats'>
-                <h5>Stats</h5>
+                <h5>Base Stats</h5>
                 {modalDiv.pokemonStats}
               </div>
           </Col>
