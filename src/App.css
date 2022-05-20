@@ -24,6 +24,9 @@ h2 {
     flex-wrap: wrap;
     justify-content: space-between;
 }
-.modal {
-    
-}
+
+@media only screen and (max-width: 500px) {
+    .cards {
+        justify-content: center;
+    }
+  }

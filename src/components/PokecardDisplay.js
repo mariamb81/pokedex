@@ -4,7 +4,7 @@ import { Pokecard } from './Pokecard.js'
 export const PokecardDisplay = (props) => {
   const [pokemonData, setPokemonData] = useState([]);
   useEffect(() => {
-    console.log(props.pokemonList);
+    // console.log(props.pokemonList);
     setPokemonData(props.pokemonList);
   }, [props.pokemonList]);
   const sendPokeDataToParent = (clickData) => {
@@ -21,10 +21,7 @@ export const PokecardDisplay = (props) => {
   ); 
   return (
     <div className='cards'>
-      {
-      pokemonData.length !== 0 ? renderPokecards :
-      <p>No results</p>
-      }
+      {renderPokecards}
     </div>
   )
 }

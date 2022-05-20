@@ -7,10 +7,10 @@ import Pokeball from '../resources/icons8-pokeball-50.png'
 
 export const NavBar = () => {
   return (
-        <Container>
-            <ContainerLogo>
+        <div className='nav-container'>
+            <div className='nav-logo'>
                 <Logo src="https://fontmeme.com/permalink/220426/c5342c47847318ee4b4d515a7e94c776.png" alt="pokedex-icon" border="0"/>
-            </ContainerLogo>
+            </div>
             <div className='links'>
 
                 <a href='#'>
@@ -27,15 +27,16 @@ export const NavBar = () => {
                 </a>
                 <a href='#'>
                     <div className='idv home'>
-                        <img className='icon' src={Pokeball}/>    
+                        <img className='icon' alt="pokeball logo" src={Pokeball}/>    
                         <p>Home</p>
                     </div>
                 </a>
             </div>
-        </Container>
+        </div>
   )
 }
 const Container = styled.div `
+    display: flex;
     background-color: #FE2A36;
     position: absolute
     width: 100%;
@@ -50,6 +51,6 @@ const ContainerLogo = styled.div `
     left: 29px;
 `
 const Logo = styled.img `
-    max-height: 80%;
+    max-height: 70%;
     width: auto;
 `

@@ -1,7 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;900&display=swap');
+.nav-container {
+    display: flex;
+    background-color: #FE2A36;
+    width: 100%;
+    justify-content: space-between;
+}
+.nav-logo {
+    width: 195px;
+    height: 65px;
+    margin-top: 20px;
+    padding-left: 30px;
+}
 
 .links{
-    overflow: auto;
+
 }
 .links a {
     float: right;
@@ -16,18 +28,17 @@
 .links a:hover {
     background-color: #FB1B1B;
 }
-@media screen and (max-width: 500px) {
-  .navbar a {
-    float: none;
-    display: block;
-  }
-}
-.idv {
-    width: 100px;
-    height: auto;
-}
 .icon {
     width: 30px;
     height: 30px;
     padding: 10px;
+}
+@media only screen and (max-width: 500px) {
+    .links {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .links a {
+        font-size: 12px;
+    }
 }

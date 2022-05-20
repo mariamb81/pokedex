@@ -6,7 +6,7 @@ import { SearchBar } from './components/SearchBar.js'
 import { PokecardDisplay } from './components/PokecardDisplay.js'
 import { PokeInfoModal } from './components/PokeInfoModal.js'
 import { useState, useEffect } from 'react'
-
+import Loading from './components/Loading.js'
 function App() {
   const [pokemonList, setPokemonList] = useState();
   const [defaultPokemonList, setDefaultPokemonList] = useState();
@@ -23,17 +23,14 @@ function App() {
         setPokemonList(results);
         setDefaultPokemonList(results);
         console.log('pokemon data loaded.');
-        // console.log(results);
         setLoading(false);
       });
     });
   }, [searchMode]);
   const sendQueryToHome = (query) => {
     setSearchMode(true);
-    console.log(query);
     if(query !== '' && !loading){
       const results = getDataByName(query, pokemonList);
-      console.log(results);
       setPokemonList(results);
       setSearchMode(false);
     }
@@ -43,7 +40,6 @@ function App() {
   }
   const sendPokeDataToHome = (clickData) => {
     // fired when pokecard is clicked
-    console.log(clickData);
     setModalShow(true);
     setSelectedPokemon(clickData);
   }
@@ -58,7 +54,12 @@ function App() {
         </>
         : <></>}
 
+        <Loading
+        show={loading}
+        />
+
         <NavBar/>
+
         <div className='search'>
           <SearchBar
           sendQueryToHome={sendQueryToHome}
@@ -69,9 +70,8 @@ function App() {
           <h2>Pokemon</h2>
           {
             loading ?
-            <div>
-              <p>Loading...</p>
-            </div> :
+            <>
+            </> :
             <PokecardDisplay
             pokemonList={pokemonList}
             sendPokeDataToHome={sendPokeDataToHome}

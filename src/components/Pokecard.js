@@ -1,7 +1,5 @@
 import React from 'react';
 import './styles/Pokecard.css';
-import styled from 'styled-components'
-import { logo } from '../resources/loading.gif'
 export const Pokecard = (props) => {
   const pokemonData = props.data;
     return (
@@ -12,7 +10,7 @@ export const Pokecard = (props) => {
             }}
             >
                 <div className='card'>
-                    <img src={pokemonData.photo}/>
+                    <img src={pokemonData.photo} alt={pokemonData.formatted_name}/>
                     <div className='card-text'>
                         <p className='card-name'>
                             {pokemonData.formatted_name}

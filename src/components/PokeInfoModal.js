@@ -7,24 +7,11 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 export const PokeInfoModal = (props) => {
-  const typeColor = {
-    normal: 'gray',
-    fire: 'orange',
-    water: 'mediumblue',
-    grass: 'forestgreen',
-    electric: 'gold',
-    ice: 'paleturquoise',
-    fighting: 'darkred',
-    poison: 'darkmagenta',
-    dColor: 'black'
-  }
   const [data, setData] = useState(props.pokemondata);
   const [modalDiv, setModalDiv] = useState({});
   useEffect(() => {
 
   setData(props.pokemondata);
-
-  console.log(data);
 
   const pokemonStats = data.stats.map((stat, index) => <div key={index} className="stat">
     <p>{stat.stat.name}</p>
@@ -73,7 +60,7 @@ export const PokeInfoModal = (props) => {
         <Container>
         <Row>
           <Col id='col-1'>
-            <img src={data.photo}/>
+            <img src={data.photo} alt={data['formatted_name']}/>
             <h2>{data['formatted_name']}</h2>
             <h4>#00{data.id}</h4>
             <h5>Types</h5>
