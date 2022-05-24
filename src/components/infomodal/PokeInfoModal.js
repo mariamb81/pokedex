@@ -1,25 +1,26 @@
-import React, {useEffect, useState} from 'react';
-import './styles/PokeInfoModal.css';
+import React from 'react';
+import '../styles/PokeInfoModal.css';
 import Modal from 'react-bootstrap/Modal'
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Badge from 'react-bootstrap/Badge';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import { setInfoModalClosed, clearInfoModal } from './infoModalSlice';
+import { selectInfoModal } from './infoModalSlice';
+import { useSelector, useDispatch } from 'react-redux';
+
 export const PokeInfoModal = (props) => {
-  const [data, setData] = useState(props.pokemondata);
-  const [modalDiv, setModalDiv] = useState({});
-  useEffect(() => {
-
-  setData(props.pokemondata);
-
+  const dispatch = useDispatch();
+  const data = useSelector(selectInfoModal);
+  
   const pokemonStats = data.stats.map((stat, index) => <div key={index} className="stat">
     <p>{stat.stat.name}</p>
     <span>
       <ProgressBar striped variant="success" now={stat.base_stat} />
     </span>
     <p id='effort'>Effort: {stat.effort}</p>
-  </div>)
+  </div>);
   const pokemonAbilities = data.abilities.map((ability, index) => 
     <div key={index}>
       <Badge className={ability.ability.name}>
@@ -34,15 +35,20 @@ export const PokeInfoModal = (props) => {
       </Badge>
     </div>
   );
-  setModalDiv({
+  const modalDiv = {
     pokemonStats: pokemonStats,
     pokemonAbilities: pokemonAbilities,
     pokemonTypes: pokemonTypes
-  })
-  },[]);
+  };
 
   // console.log(data);
+  const handleClose = () => {
+    //close modal    
+    //dispatch action to remove data from infomodal slice
+    dispatch(clearInfoModal());
+    dispatch(setInfoModalClosed());
 
+  }
   return (
     <Modal
       {...props}
@@ -60,8 +66,8 @@ export const PokeInfoModal = (props) => {
         <Container>
         <Row>
           <Col id='col-1'>
-            <img src={data.photo} alt={data['formatted_name']}/>
-            <h2>{data['formatted_name']}</h2>
+            <img src={data.photo} alt={data.name}/>
+            <h2>{data.name}</h2>
             <h4>#00{data.id}</h4>
             <h5>Types</h5>
             {modalDiv.pokemonTypes}
@@ -81,7 +87,9 @@ export const PokeInfoModal = (props) => {
         
       </Modal.Body>
       <Modal.Footer>
-        <button onClick={props.onHide}>Close</button>
+        <button
+        onClick={handleClose}
+        >Close</button>
       </Modal.Footer>
     </Modal>
   )

@@ -12,12 +12,13 @@ input {
 }
 .box {
     display: grid;
-    grid-template-columns: .5fr 3fr;
+    grid-template-columns: .5fr 3fr .5fr;
     height: 65px;
     border: 2px solid black;
     border-radius: 5px;
     background-color: white;
     overflow: hidden;
+    align-items: center;
 }
 .icon {
     width: 50px;
@@ -25,6 +26,12 @@ input {
     margin: auto;
     grid-row:1;
     grid-column:1/2;
+    
+}
+.close {
+    grid-row: 1;
+    grid-column: 4;
+    padding: 10px;
 }
 .query {
     border: 0;

@@ -1,3 +1,4 @@
+import { formatData } from "./utilities";
 const Pokedex = require("pokeapi-js-wrapper");
 
 const customOptions = {
@@ -19,32 +20,24 @@ let pokemonList = [];
 const getDataByURL = async (url) => {
     const path = url.slice(19);
     const data = await P.resource(`${path}`);
-    const newPokemonData = 
-    {
+    //format data here
+    formatData(data);
+    return {
         id: data.id,
         name: data.name,
-        formatted_name: data.name.charAt(0).toUpperCase() + data.name.slice(1),
         photo: data.sprites.other["official-artwork"].front_default,
         types: data.types,
         abilities: data.abilities,
-        stats: data.stats
+        stats: data.stats,
+        moves: data.moves
     }
-    return newPokemonData;
 }
-
-export const getPokemonProm = async () => {
+export const getPokemonProms = async () => {
     const response = await P.getPokemonsList(interval);
+    //object w pokemon name and url
     pokemonList = response.results;
-    // console.log(pokemonList);
+    //request from API based on url
     return pokemonList.map((pokemon) => {
         return getDataByURL(pokemon.url);
     });
-}
-
-
-export const getDataByName = (name, list) => {
-    const myNewList = list.filter(
-        pokemon => pokemon.name.includes(name)
-    );
-    return myNewList;
 }

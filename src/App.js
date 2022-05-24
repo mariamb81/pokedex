@@ -1,84 +1,61 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { getDataByName, getPokemonProm } from './helpers/handleQuery.js'
-import { NavBar } from './components/NavBar.js'
-import { SearchBar } from './components/SearchBar.js'
-import { PokecardDisplay } from './components/PokecardDisplay.js'
-import { PokeInfoModal } from './components/PokeInfoModal.js'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
+import { NavBar } from './components/navbar/NavBar.js'
+import { SearchBar } from './components/searchbar/SearchBar.js'
+import { PokecardDisplay } from './components/allPokemon/PokecardDisplay.js'
+import { PokeInfoModal } from './components/infomodal/PokeInfoModal.js'
 import Loading from './components/Loading.js'
+import { useSelector, useDispatch } from 'react-redux'
+import { loadData } from './components/allPokemon/allPokemonSlice'
+import { setInfoModalClosed, clearInfoModal } from './components/infomodal/infoModalSlice';
+
 function App() {
-  const [pokemonList, setPokemonList] = useState();
-  const [defaultPokemonList, setDefaultPokemonList] = useState();
-
-  const [loading, setLoading] = useState(true);
-  const [searchMode, setSearchMode] = useState(false);
-  const [modalShow, setModalShow] = useState(false);
-  const [selectedPokemon, setSelectedPokemon] = useState(null);
-
+  const dispatch = useDispatch();
+  const { modalIsOpen } = useSelector((state) => state.infoModal);
+  const { isLoading, hasError } = useSelector((state) => state.allPokemon);
+  //load data upon render 
   useEffect(() => {
-    // getPokemonData();
-    getPokemonProm().then((promArr) => {
-      Promise.all(promArr).then((results) => {
-        setPokemonList(results);
-        setDefaultPokemonList(results);
-        console.log('pokemon data loaded.');
-        setLoading(false);
-      });
-    });
-  }, [searchMode]);
-  const sendQueryToHome = (query) => {
-    setSearchMode(true);
-    if(query !== '' && !loading){
-      const results = getDataByName(query, pokemonList);
-      setPokemonList(results);
-      setSearchMode(false);
-    }
-    else{
-      setPokemonList(defaultPokemonList);
-    }
-  }
-  const sendPokeDataToHome = (clickData) => {
-    // fired when pokecard is clicked
-    setModalShow(true);
-    setSelectedPokemon(clickData);
-  }
-    return (
-      <div className="App">
-        {!loading && selectedPokemon && modalShow ? <>
-        <PokeInfoModal
-            show={modalShow}
-            onHide={() => setModalShow(false)}
-            pokemondata={selectedPokemon}
-          />
-        </>
-        : <></>}
+    dispatch(loadData());
+  }, []);
 
-        <Loading
-        show={loading}
+  const handleClose = () => {
+    //close modal    
+    //dispatch action to remove data from infomodal slice
+    dispatch(clearInfoModal());
+    dispatch(setInfoModalClosed());
+
+  }
+  return (
+    <div className="App">
+
+      {!isLoading && modalIsOpen ? <>
+      <PokeInfoModal
+          show={modalIsOpen}
+          onHide={handleClose}
         />
+      </>
+      : <></>}
 
-        <NavBar/>
+      <Loading
+      show={isLoading}/>
 
-        <div className='search'>
-          <SearchBar
-          sendQueryToHome={sendQueryToHome}
-          />
-        </div>
-  
-        <div className='results'>
-          <h2>Pokemon</h2>
-          {
-            loading ?
-            <>
-            </> :
-            <PokecardDisplay
-            pokemonList={pokemonList}
-            sendPokeDataToHome={sendPokeDataToHome}
-            /> 
-          }
-        </div>
+      <NavBar/>
+
+      <div className='search'>
+        <SearchBar/>
       </div>
+
+      <div className='results'>
+        <h2>Pokemon</h2>
+        {
+          isLoading || hasError?
+          <>
+          </> :
+          <PokecardDisplay/> 
+        }
+      </div>
+    </div>
   );
 }
 

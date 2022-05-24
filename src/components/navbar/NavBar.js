@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import './styles/NavBar.css';
+import '../styles/NavBar.css';
 import { BsFillBookmarkStarFill, BsFillInfoSquareFill } from "react-icons/bs";
 
-import Pokeball from '../resources/icons8-pokeball-50.png'
+import Pokeball from '../../resources/icons8-pokeball-50.png'
 
 export const NavBar = () => {
   return (
