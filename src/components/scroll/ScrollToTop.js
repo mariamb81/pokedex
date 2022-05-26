@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { IoIosArrowDropup } from 'react-icons/io'
-import '../styles/ScrollToTop.css'
+import styles from '../styles/ScrollToTop.module.css'
 const ScrollToTop = () => {
     const [isVisible, setIsVisible] = useState(false);
     const scrollToTop = () => {
@@ -38,12 +38,12 @@ const ScrollToTop = () => {
     }
     return (
     <div style={container}
-    className='scrollToTop'>
+    className={styles.scrollToTop}>
         <button
         onClick={handleClick}
-        className='scroll-icon'
+        className={styles.scrollIcon}
         >
-            <IoIosArrowDropup className='scroll-icon'>
+            <IoIosArrowDropup className={styles.scrollIcon}>
             </IoIosArrowDropup>
         </button>
     </div>

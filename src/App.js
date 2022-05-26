@@ -6,6 +6,7 @@ import { SearchBar } from './components/searchbar/SearchBar.js'
 import { PokecardDisplay } from './components/allPokemon/PokecardDisplay.js'
 import { PokeInfoModal } from './components/infomodal/PokeInfoModal.js'
 import Loading from './components/Loading.js'
+import ScrollToTop from './components/scroll/ScrollToTop'
 import { useSelector, useDispatch } from 'react-redux'
 import { loadData } from './components/allPokemon/allPokemonSlice'
 import { setInfoModalClosed, clearInfoModal } from './components/infomodal/infoModalSlice';
@@ -28,7 +29,7 @@ function App() {
   }
   return (
     <div className="App">
-
+      
       {!isLoading && modalIsOpen ? <>
       <PokeInfoModal
           show={modalIsOpen}
@@ -45,7 +46,6 @@ function App() {
       <div className='search'>
         <SearchBar/>
       </div>
-
       <div className='results'>
         <h2>Pokemon</h2>
         {

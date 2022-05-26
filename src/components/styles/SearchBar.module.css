@@ -1,32 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;900&display=swap');
-html {
-    font-family: 'Rubik', sans-serif;
-}
 
-input {
+.searchBar input {
     font-size: 16px;
     font-weight: 300;
 }
-.search-bar {
+.searchBar {
     width: 55%;
 }
 .box {
     display: grid;
     grid-template-columns: .5fr 3fr .5fr;
     height: 65px;
-    border: 2px solid black;
-    border-radius: 5px;
+    box-shadow: 2px 2px 8px 2px rgba(102, 102, 102, 0.25);
+    border-radius: 15px;
     background-color: white;
     overflow: hidden;
     align-items: center;
 }
 .icon {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     margin: auto;
     grid-row:1;
     grid-column:1/2;
-    
 }
 .close {
     grid-row: 1;

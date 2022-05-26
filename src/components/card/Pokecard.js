@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Pokecard.css';
+import styles from '../styles/Pokecard.module.css';
 import { useDispatch } from 'react-redux';
 import { setInfoModal, setInfoModalOpen } from '../infomodal/infoModalSlice';
 
@@ -14,20 +14,20 @@ export const Pokecard = (props) => {
         dispatch(setInfoModalOpen());
     }
     return (
-        <div className='container'>
-            <a
+        <div className={styles.card}>
+            <button
             onClick={handleClick}
             >
-                <div className='card'>
+                <div>
                     <img src={pokemonData.photo} alt={pokemonData.name}/>
-                    <div className='card-text'>
+                    <div className={styles.cardText}>
                         <p className='card-name'>
                             {pokemonData.name}
                         </p>
-                        <p className='card-id'> #{pokemonData.id}</p>
+                        <p className={styles.cardID}>#{pokemonData.id}</p>
                     </div>
                 </div>
-            </a>
+            </button>
         </div>
       );
 } 

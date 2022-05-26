@@ -1,6 +1,6 @@
 import React from 'react'
-import '../styles/SearchBar.css';
-import {BsSearch} from "react-icons/bs";
+import styles from '../styles/SearchBar.module.css';
+import { BsSearch } from "react-icons/bs";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSearchTerm } from './searchTermSlice';
 import { setSearchTerm, clearSearchTerm } from './searchTermSlice';
@@ -17,20 +17,20 @@ export const SearchBar = () => {
     dispatch(clearSearchTerm());
   }
   return (
-    <div className='search-bar'>
+    <div className={styles.searchBar}>
       <label>
           Search Pokemon by Name:
         </label>
-          <div className='box'>
-            <BsSearch className='icon'/>
+          <div className={styles.box}>
+            <BsSearch className={styles.icon}/>
             <input 
             type="text"
-            className='query'
+            className={styles.query}
             placeholder='Search:'
             value={searchTerm}
             onChange={handleChange}
             />
-            <div className={'close'}>
+            <div className={styles.close}>
               <CloseButton 
               onClick={handleClear}
               />

@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store } from './store';
+import ScrollToTop from './components/scroll/ScrollToTop'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
   <Provider store={store}>
     <App/>
+    <ScrollToTop className='scroll'/>
   </Provider>
   </React.StrictMode>
 );

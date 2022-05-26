@@ -1,21 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;900&display=swap');
-.nav-container {
+img {
+    max-height: 70%;
+    width: auto;
+}
+.navContainer {
     display: flex;
     background-color: #FE2A36;
     width: 100%;
     justify-content: space-between;
 }
-.nav-logo {
+.navLogo {
     width: 195px;
     height: 65px;
     margin-top: 20px;
+    padding: 0;
     padding-left: 30px;
 }
-
+/* links q */
+/*
 .links{
-
+    visibility: hidden;
 }
-.links a {
+.idv {
     float: right;
     color: white;
     padding: 10px;
@@ -42,3 +47,4 @@
         font-size: 12px;
     }
 }
+*/

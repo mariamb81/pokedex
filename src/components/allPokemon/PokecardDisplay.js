@@ -6,9 +6,7 @@ export const PokecardDisplay = () => {
   const pokemonData = useSelector(selectFilteredAllPokemon);
   //map pokemon data to create cards
   const renderPokecards = pokemonData.map((pokemon, index) => 
-    <div key={index}>
-      <Pokecard pokemon={pokemon}/>
-  </div>
+      <Pokecard key={index} pokemon={pokemon}/>
   ); 
   return (
     <div className='cards'>

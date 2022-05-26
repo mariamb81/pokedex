@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/PokeInfoModal.css';
+import styles from '../styles/PokeInfoModal.module.css';
 import Modal from 'react-bootstrap/Modal'
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Badge from 'react-bootstrap/Badge';
@@ -13,24 +13,24 @@ import { useSelector, useDispatch } from 'react-redux';
 export const PokeInfoModal = (props) => {
   const dispatch = useDispatch();
   const data = useSelector(selectInfoModal);
-  
-  const pokemonStats = data.stats.map((stat, index) => <div key={index} className="stat">
+
+  const pokemonStats = data.stats.map((stat, index) => <div key={index} className={styles.stat}>
     <p>{stat.stat.name}</p>
     <span>
-      <ProgressBar striped variant="success" now={stat.base_stat} />
+      <ProgressBar variant="success" now={stat.base_stat} />
     </span>
-    <p id='effort'>Effort: {stat.effort}</p>
+    <p className={styles.effort}>Effort: {stat.effort}</p>
   </div>);
   const pokemonAbilities = data.abilities.map((ability, index) => 
-    <div key={index}>
-      <Badge className={ability.ability.name}>
+    <div key={index} className={styles.abilities}>
+      <Badge className={styles[ability.ability.name]}>
         {ability.ability.name}
       </Badge>
     </div>
   );
   const pokemonTypes = data.types.map((type, index) => 
-    <div key={index}>
-      <Badge className={type.type.name}>
+    <div key={index} className={styles.types}>
+      <Badge className={styles[type.type.name]}>
         {type.type.name}
       </Badge>
     </div>
@@ -56,6 +56,7 @@ export const PokeInfoModal = (props) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
       backdrop="static"
+      className={styles.pokeInfoModal}
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
@@ -65,19 +66,19 @@ export const PokeInfoModal = (props) => {
       <Modal.Body>
         <Container>
         <Row>
-          <Col id='col-1'>
+          <Col className={styles.col1}>
             <img src={data.photo} alt={data.name}/>
             <h2>{data.name}</h2>
-            <h4>#00{data.id}</h4>
+            <h4>#0{data.id}</h4>
             <h5>Types</h5>
             {modalDiv.pokemonTypes}
-            <div className='abilities'>
+            <div className={styles.abilities}>
               <h5>Abilities</h5>
                 {modalDiv.pokemonAbilities}
             </div>
           </Col>
-          <Col id='col-2'>
-              <div className='stats'>
+          <Col className={styles.col2}>
+              <div className={styles.stats}>
                 <h5>Base Stats</h5>
                 {modalDiv.pokemonStats}
               </div>
