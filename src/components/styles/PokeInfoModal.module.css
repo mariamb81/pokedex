@@ -69,3 +69,15 @@
 .ground {
     background-color: brown !important;
 }
+.ghost {
+    background-color: rgb(117, 60, 145) !important;
+}
+.dragon {
+    background-color: rgb(188, 112, 225) !important;
+}
+.steel {
+    background-color: #a8bac2 !important;
+}
+.flying {
+    background-color: rgb(53, 158, 162) !important;
+}
